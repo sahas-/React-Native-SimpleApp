@@ -7,6 +7,8 @@ var {
 	View,
 	Text,
 	Component,
+	TouchableHighlight,
+	AlertIOS,
 } = React;
 
 var styles = StyleSheet.create({
@@ -19,15 +21,26 @@ var styles = StyleSheet.create({
 		flex:1,
 		alignItems: 'center',
     	justifyContent: 'center',
-	}
+	},
+	wrapper: {
+    	borderRadius: 5,
+    	marginBottom: 5,
+  	},
 });
 
 class Welcome extends Component {
 	render(){
 		return(
 			<View style={styles.container}>
-			<Text style={styles.description}>
-				Featured View...
+			<Text style={styles.description} onPress={() => AlertIOS.alert(
+            	'Alert',
+            	'Do you like React-Native ?',
+            	 [
+	              {text: 'Yes', onPress: () => console.log('Liked it !!')},
+	              {text: 'No', onPress: () => console.log('Not yet, need more time..')},
+            	]
+          		)}>
+				Featured View..click here..
 			</Text>
 			</View>
 			);

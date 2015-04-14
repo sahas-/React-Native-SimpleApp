@@ -6,7 +6,7 @@ var {
 	Text,
 	Component,
 	View,
-	StyleSheet
+	StyleSheet,
 } = React;
 
 var styles = StyleSheet.create({
@@ -23,10 +23,15 @@ var styles = StyleSheet.create({
 });
 
 class DTPicker extends Component{
-	
+
 	constructor(props){
     	super(props);
     	this.state={date: new Date()};
+  	}
+
+  	getDefaultProps() {
+    return {
+      date: new Date()};
   	}
 
 	render(){
@@ -35,7 +40,7 @@ class DTPicker extends Component{
 				<DatePickerIOS
 		          date={this.state.date}
 		          mode="datetime"
-		          onDateChange={()=>{this.setState({date:date});}}
+		          onDateChange={(date)=>{this.setState({date:date});}}
 		        />
 			</View>
 			);
